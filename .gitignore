@@ -1,0 +1,40 @@
+# Unity generated
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Aa]ssets/AssetStoreTools*
+
+# Visual Studio / Rider / VS Code
+.vs/
+.idea/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.opendb
+*.VC.db
+
+# OS generated
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# BlenderKit Local Cache & Temp Downloads
+.bk_cache/
+bk_temp/
+
+# Graphify
+graphify-out/
+*.graphify
+.graphify/

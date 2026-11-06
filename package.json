@@ -1,0 +1,21 @@
+{
+  "name": "com.blenderkit.unity",
+  "version": "1.0.0",
+  "displayName": "BlenderKit Materials for Unity",
+  "description": "Search, download, and drag-and-drop BlenderKit PBR materials directly onto 3D objects in the Unity Scene.",
+  "unity": "2021.3",
+  "unityRelease": "0f1",
+  "type": "tool",
+  "license": "MIT",
+  "keywords": [
+    "blenderkit",
+    "materials",
+    "pbr",
+    "textures",
+    "scene-drag"
+  ],
+  "author": {
+    "name": "BlenderKit Community Integration"
+  },
+  "dependencies": {}
+}

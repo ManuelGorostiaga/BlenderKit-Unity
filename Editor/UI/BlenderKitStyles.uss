@@ -1,0 +1,197 @@
+.root-container {
+    flex-grow: 1;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    font-size: 12px;
+}
+
+.toolbar-panel {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 8px 12px;
+    background-color: #252526;
+    border-bottom-width: 1px;
+    border-bottom-color: #333333;
+}
+
+.search-field {
+    flex-grow: 1;
+    min-width: 180px;
+    margin-right: 8px;
+    height: 24px;
+}
+
+.dropdown-field {
+    min-width: 110px;
+    margin-right: 8px;
+    height: 24px;
+}
+
+.toggle-field {
+    margin-right: 8px;
+    height: 24px;
+    align-self: center;
+}
+
+.action-btn {
+    padding: 4px 12px;
+    height: 24px;
+    background-color: #383838;
+    color: #ffffff;
+    border-radius: 4px;
+    border-width: 1px;
+    border-color: #555555;
+    margin-right: 6px;
+    -unity-font-style: bold;
+}
+
+.action-btn:hover {
+    background-color: #4a4a4a;
+}
+
+.action-btn:active {
+    background-color: #2a2a2a;
+}
+
+.settings-panel {
+    background-color: #2b2b2b;
+    border-bottom-width: 1px;
+    border-bottom-color: #383838;
+    padding: 10px 14px;
+}
+
+.settings-title {
+    font-size: 13px;
+    -unity-font-style: bold;
+    margin-bottom: 6px;
+    color: #4fc1ff;
+}
+
+.materials-scroll {
+    flex-grow: 1;
+    padding: 12px;
+}
+
+.materials-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.material-card {
+    width: 175px;
+    background-color: #252526;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: #3a3a3a;
+    margin: 6px;
+    padding: 8px;
+    overflow: hidden;
+}
+
+.material-card:hover {
+    border-color: #007acc;
+    background-color: #2d2d30;
+}
+
+.material-card.downloaded {
+    border-color: #2e7d32;
+}
+
+.card-thumbnail {
+    width: 157px;
+    height: 157px;
+    border-radius: 4px;
+    background-color: #1a1a1a;
+    margin-bottom: 6px;
+    border-width: 1px;
+    border-color: #333333;
+}
+
+.card-title {
+    -unity-font-style: bold;
+    font-size: 12px;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #ffffff;
+}
+
+.card-category {
+    font-size: 10px;
+    color: #888888;
+    margin-bottom: 6px;
+}
+
+.card-progress {
+    height: 14px;
+    margin-bottom: 6px;
+}
+
+.card-btn {
+    height: 24px;
+    margin-top: 4px;
+    border-radius: 4px;
+    font-size: 11px;
+    border-width: 1px;
+    border-color: #444444;
+}
+
+.download-btn {
+    background-color: #0e639c;
+    color: #ffffff;
+    -unity-font-style: bold;
+}
+
+.download-btn:hover {
+    background-color: #1177bb;
+}
+
+.apply-btn {
+    background-color: #2e7d32;
+    color: #ffffff;
+    -unity-font-style: bold;
+}
+
+.apply-btn:hover {
+    background-color: #388e3c;
+}
+
+.drag-handle {
+    background-color: #3a3d41;
+    color: #dcdcdc;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 10px;
+    -unity-text-align: middle-center;
+    margin-top: 4px;
+    cursor: pan;
+}
+
+.drag-handle:hover {
+    background-color: #007acc;
+    color: #ffffff;
+}
+
+.footer-panel {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 14px;
+    background-color: #252526;
+    border-top-width: 1px;
+    border-top-color: #333333;
+}
+
+.pagination-controls {
+    flex-direction: row;
+    align-items: center;
+}
+
+.page-label {
+    margin: 0 8px;
+    font-size: 11px;
+    color: #aaaaaa;
+}

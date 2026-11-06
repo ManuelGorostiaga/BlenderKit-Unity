@@ -23,13 +23,38 @@ A Unity Editor extension bringing the **BlenderKit** online PBR materials librar
 
 ## Installation
 
-### Via Unity Package Manager (Local Folder / Git)
+### 1. Import by URL (Unity Package Manager)
 1. Open your Unity Project.
-2. Open **Window > Package Manager**.
-3. Click the **+** icon in the top left and select **Add package from disk...**
-4. Select `package.json` inside this repository (`BlenderKit-Unity/package.json`).
+2. Go to **Window > Package Manager**.
+3. Click the **+** (plus) icon in the top-left toolbar and select **Add package from git URL...**
+4. Paste the repository URL:
+   - **From GitHub (once pushed):**
+     ```
+     https://github.com/<your-username>/BlenderKit-Unity.git
+     ```
+   - **From Local Git repository:**
+     ```
+     file:c:/Dev/BlenderKit-Unity
+     ```
+5. Click **Add**. Unity will automatically clone, index, and load the package into your project.
 
-Alternatively, copy the `BlenderKit-Unity` directory directly into your project's `Packages/` or `Assets/` folder.
+### 2. Add via `Packages/manifest.json`
+You can also add it directly to your Unity project's `Packages/manifest.json` under `"dependencies"`:
+```json
+{
+  "dependencies": {
+    "com.blenderkit.unity": "https://github.com/<your-username>/BlenderKit-Unity.git"
+  }
+}
+```
+Or for local development:
+```json
+{
+  "dependencies": {
+    "com.blenderkit.unity": "file:c:/Dev/BlenderKit-Unity"
+  }
+}
+```
 
 ---
 

@@ -27,7 +27,6 @@ namespace BlenderKitUnity.Editor.API
             string category,
             int page,
             bool freeOnly,
-            bool purePbrOnly,
             CancellationToken cancellationToken = default)
         {
             if (page < 1)
@@ -36,11 +35,6 @@ namespace BlenderKitUnity.Editor.API
             }
 
             string query = "asset_type:material";
-
-            if (purePbrOnly)
-            {
-                query += " purePbr:true";
-            }
 
             if (freeOnly)
             {

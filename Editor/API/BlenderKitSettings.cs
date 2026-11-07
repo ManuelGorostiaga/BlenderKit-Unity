@@ -9,7 +9,6 @@ namespace BlenderKitUnity.Editor.API
         private const string ApiKeyKey = "BlenderKit_ApiKey";
         private const string ResolutionKey = "BlenderKit_DefaultResolution";
         private const string TargetFolderKey = "BlenderKit_TargetFolder";
-        private const string PurePbrOnlyKey = "BlenderKit_PurePbrOnly";
 
         public static string BlenderExecutablePath
         {
@@ -33,12 +32,6 @@ namespace BlenderKitUnity.Editor.API
         {
             get => EditorPrefs.GetString(TargetFolderKey, "Assets/BlenderKit/Materials");
             set => EditorPrefs.SetString(TargetFolderKey, value);
-        }
-
-        public static bool PurePbrOnly
-        {
-            get => EditorPrefs.GetBool(PurePbrOnlyKey, true);
-            set => EditorPrefs.SetBool(PurePbrOnlyKey, value);
         }
     }
 }

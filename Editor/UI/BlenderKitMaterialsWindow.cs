@@ -33,7 +33,6 @@ namespace BlenderKitUnity.Editor.UI
         private PopupField<string> categoryPopup;
         private PopupField<string> resolutionPopup;
         private Toggle freeOnlyToggle;
-        private Toggle purePbrToggle;
         private VisualElement settingsContainer;
         private TextField blenderPathField;
         private TextField apiKeyField;
@@ -80,8 +79,8 @@ namespace BlenderKitUnity.Editor.UI
 
             BuildToolbar();
             BuildSettingsPanel();
-            BuildInfoBanner();
             BuildMaterialsView();
+            BuildInfoBanner();
             BuildFooter();
 
             _ = TriggerSearchAsync();
@@ -168,16 +167,6 @@ namespace BlenderKitUnity.Editor.UI
             });
             toolbar.Add(freeOnlyToggle);
 
-            purePbrToggle = new Toggle("PBR Only") { value = BlenderKitSettings.PurePbrOnly };
-            purePbrToggle.AddToClassList("toggle-field");
-            purePbrToggle.RegisterValueChangedCallback(evt =>
-            {
-                BlenderKitSettings.PurePbrOnly = evt.newValue;
-                currentPage = 1;
-                _ = TriggerSearchAsync();
-            });
-            toolbar.Add(purePbrToggle);
-
             var searchBtn = new Button(() =>
             {
                 currentPage = 1;
@@ -244,15 +233,17 @@ namespace BlenderKitUnity.Editor.UI
         private void BuildInfoBanner()
         {
             var banner = new Label("Tip: Drag any downloaded material card directly onto a 3D object in the Scene View.");
-            banner.style.paddingTop = 4;
-            banner.style.paddingBottom = 4;
+            banner.style.paddingTop = 6;
+            banner.style.paddingBottom = 6;
             banner.style.paddingLeft = 12;
             banner.style.paddingRight = 12;
             banner.style.backgroundColor = new Color(0.12f, 0.28f, 0.4f, 0.5f);
             banner.style.color = new Color(0.8f, 0.9f, 1f);
             banner.style.fontSize = 11;
-            banner.style.borderBottomWidth = 1;
-            banner.style.borderBottomColor = new Color(0.2f, 0.4f, 0.6f, 0.5f);
+            banner.style.whiteSpace = WhiteSpace.Normal;
+            banner.style.flexShrink = 0;
+            banner.style.borderTopWidth = 1;
+            banner.style.borderTopColor = new Color(0.2f, 0.4f, 0.6f, 0.5f);
             root.Add(banner);
         }
 
@@ -312,7 +303,6 @@ namespace BlenderKitUnity.Editor.UI
             string keywords = searchTextField.value;
             string category = categoryPopup.value;
             bool freeOnly = freeOnlyToggle.value;
-            bool purePbr = purePbrToggle.value;
 
             try
             {
@@ -321,7 +311,6 @@ namespace BlenderKitUnity.Editor.UI
                     category,
                     currentPage,
                     freeOnly,
-                    purePbr,
                     searchCts.Token);
 
                 PopulateResults(response);

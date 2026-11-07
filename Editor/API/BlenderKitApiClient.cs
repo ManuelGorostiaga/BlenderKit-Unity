@@ -63,17 +63,17 @@ namespace BlenderKitUnity.Editor.API
             string apiKey = BlenderKitSettings.ApiKey;
             if (!string.IsNullOrWhiteSpace(apiKey))
             {
-                request.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey.Trim());
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", apiKey.Trim());
             }
 
             using HttpResponseMessage response = await httpClient.SendAsync(request, cancellationToken);
             if (!response.IsSuccessStatusCode)
             {
-                string errorBody = await response.Content.ReadAsStringAsync(cancellationToken);
+                string errorBody = await response.Content.ReadAsStringAsync();
                 throw new HttpRequestException($"BlenderKit search failed with status {response.StatusCode}: {errorBody}");
             }
 
-            string json = await response.Content.ReadAsStringAsync(cancellationToken);
+            string json = await response.Content.ReadAsStringAsync();
             SearchResponse searchResponse = JsonUtility.FromJson<SearchResponse>(json);
             if (searchResponse == null)
             {
@@ -106,11 +106,11 @@ namespace BlenderKitUnity.Editor.API
             using HttpResponseMessage response = await httpClient.SendAsync(request, cancellationToken);
             if (!response.IsSuccessStatusCode)
             {
-                string errorContent = await response.Content.ReadAsStringAsync(cancellationToken);
+                string errorContent = await response.Content.ReadAsStringAsync();
                 throw new HttpRequestException($"Failed to resolve download URL with status {response.StatusCode}: {errorContent}");
             }
 
-            string json = await response.Content.ReadAsStringAsync(cancellationToken);
+            string json = await response.Content.ReadAsStringAsync();
             DownloadResponse downloadResponse = JsonUtility.FromJson<DownloadResponse>(json);
             if (downloadResponse == null)
             {
@@ -153,8 +153,8 @@ namespace BlenderKitUnity.Editor.API
             }
 
             long totalBytes = response.Content.Headers.ContentLength ?? -1L;
-            await using Stream streamToReadFrom = await response.Content.ReadAsStreamAsync(cancellationToken);
-            await using Stream streamToWriteTo = File.Open(destinationFilePath, FileMode.Create, FileAccess.Write, FileShare.None);
+            using Stream streamToReadFrom = await response.Content.ReadAsStreamAsync();
+            using Stream streamToWriteTo = File.Open(destinationFilePath, FileMode.Create, FileAccess.Write, FileShare.None);
 
             byte[] buffer = new byte[81920];
             long totalBytesRead = 0L;
@@ -186,7 +186,7 @@ namespace BlenderKitUnity.Editor.API
                 throw new ArgumentException("Thumbnail URL cannot be null or empty.", nameof(thumbnailUrl));
             }
 
-            byte[] imageBytes = await httpClient.GetByteArrayAsync(thumbnailUrl, cancellationToken);
+            byte[] imageBytes = await httpClient.GetByteArrayAsync(thumbnailUrl);
             if (imageBytes == null || imageBytes.Length == 0)
             {
                 throw new InvalidOperationException($"Empty thumbnail response received from {thumbnailUrl}");

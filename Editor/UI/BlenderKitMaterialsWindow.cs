@@ -129,7 +129,7 @@ namespace BlenderKitUnity.Editor.UI
             var toolbar = new VisualElement();
             toolbar.AddToClassList("toolbar-panel");
 
-            searchTextField = new TextField { placeholderText = "Search materials..." };
+            searchTextField = new TextField();
             searchTextField.AddToClassList("search-field");
             searchTextField.RegisterCallback<KeyDownEvent>(evt =>
             {
@@ -143,7 +143,7 @@ namespace BlenderKitUnity.Editor.UI
 
             categoryPopup = new PopupField<string>(new List<string>(Categories), 0);
             categoryPopup.AddToClassList("dropdown-field");
-            categoryPopup.RegisterValueChangedCallback(_ =>
+            categoryPopup.RegisterValueChangedCallback(evt =>
             {
                 currentPage = 1;
                 _ = TriggerSearchAsync();
@@ -161,7 +161,7 @@ namespace BlenderKitUnity.Editor.UI
 
             freeOnlyToggle = new Toggle("Free") { value = true };
             freeOnlyToggle.AddToClassList("toggle-field");
-            freeOnlyToggle.RegisterValueChangedCallback(_ =>
+            freeOnlyToggle.RegisterValueChangedCallback(evt =>
             {
                 currentPage = 1;
                 _ = TriggerSearchAsync();
@@ -368,7 +368,7 @@ namespace BlenderKitUnity.Editor.UI
 
         private void UpdatePaginationControls()
         {
-            int totalPages = Mathf.Max(1, Mathf.CeilingToInt((float)totalCount / PageSize));
+            int totalPages = Mathf.Max(1, Mathf.CeilToInt((float)totalCount / PageSize));
             pageInfoLabel.text = $"Page {currentPage} of {totalPages} ({totalCount} materials)";
             prevPageBtn.SetEnabled(currentPage > 1);
             nextPageBtn.SetEnabled(currentPage < totalPages);
